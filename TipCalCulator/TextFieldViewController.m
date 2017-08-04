@@ -8,10 +8,13 @@
 
 #import "TextFieldViewController.h"
 
-@interface TextFieldViewController ()
+@interface TextFieldViewController () <UITextFieldDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *enterBillAmount;
+@property (weak, nonatomic) IBOutlet UILabel *calculatedFullAmount;
+@property (weak, nonatomic) IBOutlet UILabel *TipAmount;
+@property (nonatomic) float billAmount;
 
 @end
 
@@ -21,16 +24,45 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.enterBillAmount.delegate = self;
+    
     self.enterBillAmount.backgroundColor = [UIColor grayColor];
     
     [self.enterBillAmount becomeFirstResponder];
+    
+    //[self.enterBillAmount textfi]
 
+//    self.billAmount = [self.enterBillAmount.text integerValue];
+//    
+//    NSLog(@"%ld",(long)self.billAmount);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)enterBillAmount {
+
+    [self.enterBillAmount resignFirstResponder];
+    
+    
+    self.billAmount = [self.enterBillAmount.text floatValue] * 0.15;
+    
+    self.TipAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];
+    
+    self.billAmount = ([self.enterBillAmount.text floatValue] * 0.15) + [self.enterBillAmount.text integerValue];
+    ;
+    
+    NSLog(@"%.2f",self.billAmount);
+    
+    self.calculatedFullAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];//self.billAmount;
+    
+    return YES;
+}
+
 
 /*
 #pragma mark - Navigation
@@ -41,5 +73,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end
