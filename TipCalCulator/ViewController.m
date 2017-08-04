@@ -8,7 +8,11 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextFieldDelegate>
+
+//@property (nonnull) UITextField *billAmountTextField;
+
+
 
 @end
 
