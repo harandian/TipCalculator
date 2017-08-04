@@ -45,14 +45,23 @@
                                     <constraint firstAttribute="width" constant="45" id="IOP-Sy-HvO"/>
                                 </constraints>
                                 <state key="normal" title="15%"/>
+                                <connections>
+                                    <action selector="setTo15Perc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eFs-1y-Mr2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHP-wm-TbY">
                                 <rect key="frame" x="165" y="231" width="45" height="30"/>
                                 <state key="normal" title="17%"/>
+                                <connections>
+                                    <action selector="setTo17Perc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dE8-z1-iJP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk1-YL-zXe">
                                 <rect key="frame" x="284" y="231" width="45" height="30"/>
                                 <state key="normal" title="20%"/>
+                                <connections>
+                                    <action selector="setTo25perc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HbW-2z-1Be"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgO-Uc-I9q">
                                 <rect key="frame" x="84" y="369" width="207.5" height="21"/>
@@ -119,6 +128,8 @@
                         <outlet property="TipAmount" destination="Eaq-OX-RS1" id="tvw-73-qG5"/>
                         <outlet property="calculatedFullAmount" destination="RgO-Uc-I9q" id="Soa-uI-UaA"/>
                         <outlet property="enterBillAmount" destination="JLM-p2-UQS" id="gDK-Fe-fKK"/>
+                        <outlet property="setTipAt15Perc" destination="gu4-Sb-gth" id="D4c-3v-2Op"/>
+                        <outlet property="setTipAt17Perc" destination="FHP-wm-TbY" id="GNn-27-sdY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

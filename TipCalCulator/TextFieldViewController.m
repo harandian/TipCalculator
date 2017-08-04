@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *calculatedFullAmount;
 @property (weak, nonatomic) IBOutlet UILabel *TipAmount;
 @property (nonatomic) float billAmount;
+@property (nonatomic) float tipPercent;
+@property (weak, nonatomic) IBOutlet UIButton *setTipAt15Perc;
+@property (weak, nonatomic) IBOutlet UIButton *setTipAt17Perc;
 
 @end
 
@@ -24,17 +27,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    
+    
+    
+    
     self.enterBillAmount.delegate = self;
     
     self.enterBillAmount.backgroundColor = [UIColor grayColor];
     
     [self.enterBillAmount becomeFirstResponder];
-    
-    //[self.enterBillAmount textfi]
 
-//    self.billAmount = [self.enterBillAmount.text integerValue];
-//    
-//    NSLog(@"%ld",(long)self.billAmount);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,18 +51,18 @@
 
     [self.enterBillAmount resignFirstResponder];
     
-    
-    self.billAmount = [self.enterBillAmount.text floatValue] * 0.15;
-    
-    self.TipAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];
-    
-    self.billAmount = ([self.enterBillAmount.text floatValue] * 0.15) + [self.enterBillAmount.text integerValue];
-    ;
-    
-    NSLog(@"%.2f",self.billAmount);
-    
-    self.calculatedFullAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];//self.billAmount;
-    
+//    
+//    self.billAmount = [self.enterBillAmount.text floatValue] * self.tipPercent;
+//    
+//    self.TipAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];
+//    
+//    self.billAmount = ([self.enterBillAmount.text floatValue] * self.tipPercent) + [self.enterBillAmount.text integerValue];
+//    ;
+//    
+//    NSLog(@"%.2f",self.billAmount);
+//    
+//    self.calculatedFullAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];//self.billAmount;
+//    
     return YES;
 }
 
@@ -74,6 +77,63 @@
 }
 */
 
+- (IBAction)setTo15Perc:(id)sender {
+    
+    self.tipPercent = 0.15;
+    
+    
+    self.billAmount = [self.enterBillAmount.text floatValue] * self.tipPercent;
+    
+    self.TipAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];
+    
+    self.billAmount = ([self.enterBillAmount.text floatValue] * self.tipPercent) + [self.enterBillAmount.text integerValue];
+    ;
+    
+    NSLog(@"%.2f",self.billAmount);
+    
+    self.calculatedFullAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];//self.billAmount;
+    
+
+
+}
+
+- (IBAction)setTo17Perc:(id)sender {
+    
+    self.tipPercent = 0.17;
+    
+    
+    self.billAmount = [self.enterBillAmount.text floatValue] * self.tipPercent;
+    
+    self.TipAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];
+    
+    self.billAmount = ([self.enterBillAmount.text floatValue] * self.tipPercent) + [self.enterBillAmount.text integerValue];
+    ;
+    
+    NSLog(@"%.2f",self.billAmount);
+    
+    self.calculatedFullAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];//self.billAmount;
+    
+
+
+}
+
+- (IBAction)setTo25perc:(id)sender {
+    
+    self.tipPercent = 0.20;
+
+    
+    self.billAmount = [self.enterBillAmount.text floatValue] * self.tipPercent;
+    
+    self.TipAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];
+    
+    self.billAmount = ([self.enterBillAmount.text floatValue] * self.tipPercent) + [self.enterBillAmount.text integerValue];
+    ;
+    
+    NSLog(@"%.2f",self.billAmount);
+    
+    self.calculatedFullAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];//self.billAmount;
+    
+}
 
 
 @end
