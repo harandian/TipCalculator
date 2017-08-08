@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *setTopTo20Perc;
 @property (weak, nonatomic) IBOutlet UITextField *enterTipAmount;
 @property (nonatomic) BOOL displayCustomAmount;
+@property (weak, nonatomic) IBOutlet UILabel *BillPerPerson;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfPeople;
+@property (strong, nonatomic) NSNumber *numberOfppl;
 
 @end
 
@@ -29,8 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
+
+    self.numberOfppl = [[NSNumber alloc] initWithFloat: 1.0];
     self.enterBillAmount.delegate = self;
     self.enterTipAmount.delegate = self;
     
@@ -55,6 +58,8 @@
         
         [self.enterBillAmount resignFirstResponder];
         
+        [self setTo0Perc:self];
+        
     } else {
                 
         [self.enterTipAmount resignFirstResponder];
@@ -73,7 +78,8 @@
         NSLog(@"%.2f",self.billAmount);
         
         self.calculatedFullAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];//self.billAmount;
-        
+        [self splitTheBill];
+
     }
     return YES;
     
@@ -92,6 +98,29 @@
  }
  */
 
+
+
+#pragma mark - Setting default payment with no Tip
+
+- (void)setTo0Perc:(id)sender {
+    
+    self.tipPercent = 0;
+    
+    self.billAmount = [self.enterBillAmount.text floatValue] * self.tipPercent;
+    
+    self.TipAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];
+    
+    self.billAmount = ([self.enterBillAmount.text floatValue] * self.tipPercent) + [self.enterBillAmount.text integerValue];
+    ;
+    
+    NSLog(@"%.2f",self.billAmount);
+    
+    self.calculatedFullAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];//self.billAmount;
+    
+    [self splitTheBill];
+
+}
+
 - (IBAction)setTo15Perc:(id)sender {
     
     self.tipPercent = 0.15;
@@ -108,7 +137,8 @@
     
     self.calculatedFullAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];//self.billAmount;
     
-    
+    [self splitTheBill];
+
     
 }
 
@@ -128,7 +158,8 @@
     
     self.calculatedFullAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];//self.billAmount;
     
-    
+    [self splitTheBill];
+
     
 }
 
@@ -148,7 +179,29 @@
     
     self.calculatedFullAmount.text = [NSString stringWithFormat:@"%.2f",self.billAmount];//self.billAmount;
     
+    [self splitTheBill];
+    
 }
 
+- (IBAction)BillSplitter:(UIStepper*)sender {
+    
+    self.numberOfPeople.text = [NSString stringWithFormat:@"%.0f",sender.value];
+    self.numberOfppl = [NSNumber numberWithDouble: sender.value];
+    
+    
+    float billPP = self.billAmount/[self.numberOfppl floatValue];;
+    
+    self.BillPerPerson.text = [NSString stringWithFormat:@"%.2f", billPP];
+    
+    
+}
+
+- (void) splitTheBill {
+    
+    float billPP = self.billAmount/[self.numberOfppl floatValue];;
+    
+    self.BillPerPerson.text = [NSString stringWithFormat:@"%.2f", billPP];
+
+}
 
 @end
